@@ -17,6 +17,6 @@ BODMAS Tutor evaluates expressions using a structured pipeline:
 ## 🚀 How to Run the Project
 1.	Make sure you have Python 3 installed.
 2.	Clone the repository: git clone https://github.com/iloriopeyemicharles-ctrl/BODMAS
-3.	Move into the project folder: cd BODMAS
-4.	Run the Python file: python bodmas.py
+3.	Move into the project folder: "BODMAS"
+4.	Run the Python file: "bodmas.py"
 5.  Once the script starts, follow the on-screen prompts to enter an expression and view the step-by-step solution.
