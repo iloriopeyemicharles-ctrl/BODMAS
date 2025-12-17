@@ -1,0 +1,833 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/"
+     xml:base="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:BODMAS="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#appliedOperation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#appliedOperation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#attemptOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#attemptOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasDifficultyLevel -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasDifficultyLevel"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasErrorPattern -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasErrorPattern">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ErrorPattern"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasOperation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasOperation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasStage -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasStage">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasSubExpression -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasSubExpression">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#higherPrecedenceThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#higherPrecedenceThan">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#partOfExpression -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#partOfExpression">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#performedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#performedBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#practisesSkill -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#practisesSkill">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#producesExpression -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#producesExpression">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#testsSkill -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#testsSkill">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#triggersFeedback -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#triggersFeedback">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#FeedbackAction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#attemptNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#attemptNumber">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasCorrectAnswer -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasCorrectAnswer">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasDifficultyLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasDifficultyLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasMastery -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasMastery">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Student"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasText -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasText">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hintUsedCount -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hintUsedCount">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#isCorrectStep -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#isCorrectStep">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#precedenceLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#precedenceLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#stageOrder -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#stageOrder">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#symbol -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#symbol">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#timeTakenSeconds -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#timeTakenSeconds">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#AdditionOperation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#AdditionOperation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BracketOperation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BracketOperation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#CompoundExpression -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#CompoundExpression">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#DivisionOperation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#DivisionOperation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ErrorPattern -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ErrorPattern"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#FeedbackAction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#FeedbackAction"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#MultiplicationOperation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#MultiplicationOperation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#OrderOperation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#OrderOperation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SimpleExpression -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SimpleExpression">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Student -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Student"/>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SubtractionOperation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SubtractionOperation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Operation"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#AllLeftToRightNoPrecedence -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#AllLeftToRightNoPrecedence">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ErrorPattern"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ConfirmCorrectStep -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ConfirmCorrectStep">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#FeedbackAction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#GiveConceptHint -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#GiveConceptHint">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#FeedbackAction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#IgnoredBrackets -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#IgnoredBrackets">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ErrorPattern"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#OrdersAfterAddSub -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#OrdersAfterAddSub">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ErrorPattern"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ShowWorkedExample -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#ShowWorkedExample">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#FeedbackAction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyAdditionSubtraction -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyAdditionSubtraction">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyBracketsFirst -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyBracketsFirst">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyDivisionBeforeAdditionSubtraction -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyDivisionBeforeAdditionSubtraction">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyDivisionMultiplication -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyDivisionMultiplication">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyMultiplicationBeforeAdditionSubtraction -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyMultiplicationBeforeAdditionSubtraction">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyNestedBrackets -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyNestedBrackets">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyOrders -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyOrders">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyPowersAndRoots -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillApplyPowersAndRoots">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillCheckFinalAnswerReasonableness -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillCheckFinalAnswerReasonableness">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillCheckIntermediateResults -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillCheckIntermediateResults">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillCombineLikeTermsInAdditionSubtraction -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillCombineLikeTermsInAdditionSubtraction">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillDetectOwnBODMASError -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillDetectOwnBODMASError">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillEvaluateExpressionStepByStep -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillEvaluateExpressionStepByStep">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillExplainBODMASStepInWords -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillExplainBODMASStepInWords">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillHandleBracketsWithNegativeNumbers -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillHandleBracketsWithNegativeNumbers">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillHandleNegativeNumbersInOperations -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillHandleNegativeNumbersInOperations">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillIdentifyBracketsInExpression -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillIdentifyBracketsInExpression">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillIdentifyNextHighestPrecedenceStep -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillIdentifyNextHighestPrecedenceStep">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillLeftToRightWithinSamePrecedence -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillLeftToRightWithinSamePrecedence">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillRecogniseOrdersSymbols -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SkillRecogniseOrdersSymbols">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Skill"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageAddSub -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageAddSub">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <BODMAS:precedenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</BODMAS:precedenceLevel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageBrackets -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageBrackets">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <BODMAS:precedenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</BODMAS:precedenceLevel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageDivMul -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageDivMul">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <BODMAS:precedenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</BODMAS:precedenceLevel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageOrders -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#StageOrders">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#BODMASStage"/>
+        <BODMAS:precedenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</BODMAS:precedenceLevel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SuggestSimplerProblem -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#SuggestSimplerProblem">
+        <rdf:type rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#FeedbackAction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/expr">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/opChosen">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/stageChosen">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/pChosen">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/opOther">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/stageOther">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/pOther">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Attempt</rdfs:comment>
+        <rdfs:label>S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Attempt"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/a"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#attemptOf"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/a"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/expr"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#appliedOperation"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/a"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/opChosen"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasStage"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/opChosen"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/stageChosen"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#precedenceLevel"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/stageChosen"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/pChosen"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Expression</rdfs:comment>
+        <rdfs:label>S2</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#Expression"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/expr"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasOperation"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/expr"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/opOther"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#hasStage"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/opOther"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/stageOther"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS#precedenceLevel"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/stageOther"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/pOther"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

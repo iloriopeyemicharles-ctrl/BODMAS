@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODMAS Master - Interactive Tutoring System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .bodmas-guide {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin-top: 15px;
+        }
+
+        .bodmas-guide h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .bodmas-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .bodmas-step {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 600;
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .solver-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .solver-card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .question-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 28px;
+            color: #333;
+            font-weight: bold;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            text-align: center;
+            border: 2px solid #667eea;
+            margin-bottom: 15px;
+        }
+
+        .question-info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.difficulty {
+            background: #ff6b6b;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            grid-column: 1 / -1;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #667eea;
+            border: 1px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .feedback-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid;
+            display: none;
+        }
+
+        .feedback-section.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .feedback-section.error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .feedback-section.active {
+            display: block;
+        }
+
+        .steps-container {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .step-item {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step-number {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 10px;
+        }
+
+        .step-expression {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .step-description {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .question-list {
+            list-style: none;
+        }
+
+        .question-list li {
+            padding: 10px;
+            background: #f8f9fa;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .question-list li:hover {
+            background: #e8ecff;
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .question-list li.active {
+            background: #667eea;
+            color: white;
+            border-left-color: #667eea;
+        }
+
+        .learning-section {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .learning-section h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .learning-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .learning-button:hover {
+            background: #5568d3;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .stat-value {
+            color: #667eea;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .bodmas-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .question-text {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 BODMAS Master</h1>
+            <p>Interactive Intelligent Tutoring System for Order of Operations</p>
+            <div class="bodmas-guide">
+                <h3>📋 BODMAS Order:</h3>
+                <div class="bodmas-steps">
+                    <div class="bodmas-step">🥇 <strong>B</strong><br>Brackets</div>
+                    <div class="bodmas-step">🥈 <strong>O</strong><br>Orders</div>
+                    <div class="bodmas-step">🥉 <strong>DM</strong><br>Div/Mul</div>
+                    <div class="bodmas-step">4️⃣ <strong>AS</strong><br>Add/Sub</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Main Solver Section -->
+            <div class="solver-card">
+                <h2>🧮 Solve the Expression</h2>
+
+                <div class="question-section">
+                    <label for="customExpression" style="margin-bottom: 10px; display: block; font-weight: 600;">
+                        Enter Mathematical Expression:
+                    </label>
+                    <input 
+                        type="text" 
+                        id="customExpression" 
+                        placeholder="e.g., 2 + 3 * 4, (5 + 2) * 3, 10 / 2 + 3"
+                        style="font-size: 18px; padding: 15px; margin-bottom: 20px;"
+                    >
+                    <p style="color: #666; font-size: 13px; margin-bottom: 15px;">
+                        💡 Tip: Use +, -, *, /, ** (for powers), and () for grouping
+                    </p>
+
+                    <div class="question-section" style="display: none;" id="displaySection">
+                        <div id="currentQuestion" class="question-text">
+                            
+                        </div>
+                        <div id="expressionInfo" style="color: #666; font-size: 14px;"></div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="answerInput">Your Answer:</label>
+                    <input type="number" id="answerInput" placeholder="Enter your answer" step="any">
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-primary" onclick="submitAnswer()">Check Answer</button>
+                    <button class="btn-secondary" onclick="showSolution()" style="grid-column: 1 / 2;">Show Solution</button>
+                </div>
+
+                <!-- Feedback Section -->
+                <div id="feedbackSection" class="feedback-section">
+                    <div id="feedbackMessage"></div>
+                    <div id="stepsDisplay" class="steps-container" style="display: none;">
+                        <strong>📍 Step-by-step Solution:</strong>
+                        <div id="stepsList"></div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button class="btn-secondary" onclick="previousQuestion()" style="flex: 1;">← Previous Sample</button>
+                    <button class="btn-secondary" onclick="nextQuestion()" style="flex: 1;">Next Sample →</button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Questions List -->
+                <div class="sidebar-card">
+                    <h3>📚 Sample Problems</h3>
+                    <p style="font-size: 12px; color: #666; margin-bottom: 15px;">Click to load sample questions</p>
+                    <ul class="question-list" id="questionsList"></ul>
+                </div>
+
+                <!-- Learning Resources -->
+                <div class="sidebar-card">
+                    <h3>📖 Learn BODMAS</h3>
+                    <div class="learning-section">
+                        <h4>Key Concepts</h4>
+                        <button class="learning-button" onclick="learnConcept('brackets')">🥇 Brackets</button>
+                        <button class="learning-button" onclick="learnConcept('orders')">🥈 Orders/Exponents</button>
+                        <button class="learning-button" onclick="learnConcept('division_multiplication')">🥉 Div & Mul</button>
+                        <button class="learning-button" onclick="learnConcept('addition_subtraction')">4️⃣ Add & Sub</button>
+                    </div>
+                    <div id="conceptDetail" style="margin-top: 15px; display: none;"></div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="sidebar-card">
+                    <h3>📊 Progress</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Correct</div>
+                            <div class="stat-value" id="correctCount">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Total</div>
+                            <div class="stat-value" id="totalCount">0</div>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="resetProgress()" style="width: 100%; margin-top: 15px;">Reset Progress</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>BODMAS Master - Intelligent Tutoring System | Powered by Flask</p>
+            <p style="font-size: 12px; margin-top: 10px;">© 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Global state
+        let questions = [];
+        let currentQuestionIndex = 0;
+        let stats = {
+            correct: 0,
+            total: 0
+        };
+
+        // Initialize the page
+        function init() {
+            loadQuestions();
+            loadProgress();
+            
+            // Allow Enter key to submit
+            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') submitAnswer();
+            });
+            
+            // Load expression when user types in custom expression
+            document.getElementById('customExpression').addEventListener('input', function() {
+                const expr = this.value.trim();
+                if (expr) {
+                    document.getElementById('displaySection').style.display = 'block';
+                    document.getElementById('currentQuestion').textContent = expr;
+                    document.getElementById('expressionInfo').textContent = '⬆️ Enter your answer above';
+                    document.getElementById('answerInput').value = '';
+                    document.getElementById('feedbackSection').classList.remove('active', 'success', 'error');
+                }
+            });
+        }
+
+        // Load questions from API
+        function loadQuestions() {
+            fetch('/api/questions')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        questions = data.questions;
+                        stats.total = questions.length;
+                        displayQuestionsList();
+                        updateStats();
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Get current expression (custom or from sample)
+        function getCurrentExpression() {
+            const custom = document.getElementById('customExpression').value.trim();
+            if (custom) {
+                return custom;
+            }
+            if (questions.length > 0 && currentQuestionIndex < questions.length) {
+                return questions[currentQuestionIndex].question;
+            }
+            return null;
+        }
+
+        // Display the current question
+        function displayQuestion(index) {
+            if (index < 0 || index >= questions.length) return;
+
+            currentQuestionIndex = index;
+            const q = questions[index];
+
+            document.getElementById('customExpression').value = q.question;
+            document.getElementById('displaySection').style.display = 'block';
+            document.getElementById('currentQuestion').textContent = q.question;
+            document.getElementById('expressionInfo').innerHTML = `
+                <span class="badge">${q.concept}</span>
+                <span class="badge difficulty">${q.difficulty}</span>
+            `;
+            document.getElementById('answerInput').value = '';
+            document.getElementById('feedbackSection').classList.remove('active', 'success', 'error');
+
+            // Highlight current question in list
+            document.querySelectorAll('.question-list li').forEach((li, i) => {
+                li.classList.remove('active');
+                if (i === index) li.classList.add('active');
+            });
+
+            // Clear previous feedback
+            document.getElementById('feedbackMessage').textContent = '';
+            document.getElementById('stepsDisplay').style.display = 'none';
+        }
+
+        // Display questions list in sidebar
+        function displayQuestionsList() {
+            const list = document.getElementById('questionsList');
+            list.innerHTML = '';
+            questions.forEach((q, index) => {
+                const li = document.createElement('li');
+                li.textContent = `Q${index + 1}: ${q.question}`;
+                li.onclick = () => displayQuestion(index);
+                list.appendChild(li);
+            });
+        }
+
+        // Submit answer
+        function submitAnswer() {
+            const answer = document.getElementById('answerInput').value;
+            const expr = getCurrentExpression();
+            
+            if (!expr) {
+                showFeedback('Please enter or select an expression', 'error');
+                return;
+            }
+            
+            if (!answer) {
+                showFeedback('Please enter an answer', 'error');
+                return;
+            }
+
+            fetch('/api/check-answer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    expression: expr,
+                    answer: parseFloat(answer)
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayFeedback(data);
+                        if (data.is_correct) {
+                            stats.correct++;
+                            updateStats();
+                        }
+                    } else {
+                        showFeedback('Error: ' + data.error, 'error');
+                    }
+                })
+                .catch(error => showFeedback('Error: ' + error.message, 'error'));
+        }
+
+        // Display feedback
+        function displayFeedback(data) {
+            const feedbackSection = document.getElementById('feedbackSection');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const stepsDisplay = document.getElementById('stepsDisplay');
+            const stepsList = document.getElementById('stepsList');
+
+            feedbackSection.classList.add('active');
+
+            if (data.is_correct) {
+                feedbackSection.classList.add('success');
+                feedbackSection.classList.remove('error');
+                feedbackMessage.innerHTML = `
+                    <h3 style="color: #155724;">✅ Correct!</h3>
+                    <p>Your answer <strong>${data.student_answer}</strong> is correct!</p>
+                `;
+            } else {
+                feedbackSection.classList.add('error');
+                feedbackSection.classList.remove('success');
+                feedbackMessage.innerHTML = `
+                    <h3 style="color: #721c24;">❌ Incorrect</h3>
+                    <p>Your answer: <strong>${data.student_answer}</strong></p>
+                    <p>Correct answer: <strong>${data.correct_answer}</strong></p>
+                `;
+            }
+
+            // Display steps
+            if (data.steps && data.steps.length > 1) {
+                stepsDisplay.style.display = 'block';
+                stepsList.innerHTML = '';
+                data.steps.forEach(step => {
+                    const stepEl = document.createElement('div');
+                    stepEl.className = 'step-item';
+                    stepEl.innerHTML = `
+                        <div class="step-number">Step ${step.step}:</div>
+                        <div class="step-expression">${step.expression}</div>
+                        <div class="step-description">${step.description}</div>
+                    `;
+                    stepsList.appendChild(stepEl);
+                });
+            }
+        }
+
+        // Show solution
+        function showSolution() {
+            const expr = getCurrentExpression();
+            
+            if (!expr) {
+                showFeedback('Please enter or select an expression', 'error');
+                return;
+            }
+
+            fetch('/api/solve', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    expression: expr
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const feedbackSection = document.getElementById('feedbackSection');
+                        const feedbackMessage = document.getElementById('feedbackMessage');
+                        const stepsDisplay = document.getElementById('stepsDisplay');
+                        const stepsList = document.getElementById('stepsList');
+
+                        feedbackSection.classList.add('active', 'success');
+                        feedbackMessage.innerHTML = `
+                            <h3 style="color: #155724;">📝 Solution</h3>
+                            <p>The correct answer following BODMAS rules is: <strong>${data.answer}</strong></p>
+                        `;
+
+                        stepsDisplay.style.display = 'block';
+                        stepsList.innerHTML = '';
+                        data.steps.forEach(step => {
+                            const stepEl = document.createElement('div');
+                            stepEl.className = 'step-item';
+                            stepEl.innerHTML = `
+                                <div class="step-number">Step ${step.step}:</div>
+                                <div class="step-expression">${step.expression}</div>
+                                <div class="step-description">${step.description}</div>
+                            `;
+                            stepsList.appendChild(stepEl);
+                        });
+                    } else {
+                        showFeedback('Error: ' + data.error, 'error');
+                    }
+                })
+                .catch(error => showFeedback('Error: ' + error.message, 'error'));
+        }
+
+        // Learn concept
+        function learnConcept(concept) {
+            fetch(`/api/learn/${concept}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const conceptDetail = document.getElementById('conceptDetail');
+                        const c = data.concept;
+                        conceptDetail.innerHTML = `
+                            <div style="background: white; padding: 15px; border-radius: 5px;">
+                                <h4 style="color: #667eea; margin-bottom: 10px;">${c.title}</h4>
+                                <p style="margin: 8px 0; color: #555;"><strong>📌 Rule:</strong> ${c.rule}</p>
+                                <p style="margin: 8px 0; color: #555;"><strong>📚 Example:</strong> ${c.example}</p>
+                                <p style="margin: 8px 0; color: #555;"><strong>⚠️ Common Mistakes:</strong></p>
+                                <ul style="margin-left: 20px; color: #555;">
+                                    ${c.common_mistakes.map(m => `<li>${m}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                        conceptDetail.style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Navigation
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                displayQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                displayQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        // Progress tracking
+        function updateStats() {
+            document.getElementById('correctCount').textContent = stats.correct;
+            document.getElementById('totalCount').textContent = stats.total;
+            saveProgress();
+        }
+
+        function saveProgress() {
+            localStorage.setItem('bodmasProgress', JSON.stringify(stats));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('bodmasProgress');
+            if (saved) {
+                stats = JSON.parse(saved);
+                updateStats();
+            }
+        }
+
+        function resetProgress() {
+            stats.correct = 0;
+            updateStats();
+            alert('Progress reset!');
+        }
+
+        function showFeedback(message, type) {
+            const feedbackSection = document.getElementById('feedbackSection');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            feedbackSection.classList.add('active', type);
+            feedbackMessage.textContent = message;
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .question-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 28px;
+            color: #333;
+            font-weight: bold;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            text-align: center;
+            border: 2px solid #667eea;
+            margin-bottom: 15px;
+        }
+
+        .question-info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.difficulty {
+            background: #ff6b6b;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            grid-column: 1 / -1;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #667eea;
+            border: 1px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .feedback-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid;
+            display: none;
+        }
+
+        .feedback-section.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .feedback-section.error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .feedback-section.active {
+            display: block;
+        }
+
+        .steps-container {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .step-item {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step-number {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 10px;
+        }
+
+        .step-expression {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .step-description {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .question-list {
+            list-style: none;
+        }
+
+        .question-list li {
+            padding: 10px;
+            background: #f8f9fa;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .question-list li:hover {
+            background: #e8ecff;
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .question-list li.active {
+            background: #667eea;
+            color: white;
+            border-left-color: #667eea;
+        }
+
+        .learning-section {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .learning-section h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .learning-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .learning-button:hover {
+            background: #5568d3;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .stat-value {
+            color: #667eea;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .bodmas-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .question-text {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 BODMAS Master</h1>
+            <p>Interactive Intelligent Tutoring System for Order of Operations</p>
+            <div class="bodmas-guide">
+                <h3>📋 BODMAS Order:</h3>
+                <div class="bodmas-steps">
+                    <div class="bodmas-step">🥇 <strong>B</strong><br>Brackets</div>
+                    <div class="bodmas-step">🥈 <strong>O</strong><br>Orders</div>
+                    <div class="bodmas-step">🥉 <strong>DM</strong><br>Div/Mul</div>
+                    <div class="bodmas-step">4️⃣ <strong>AS</strong><br>Add/Sub</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+
+        <footer>
+            <p>BODMAS Ontology Web Interface | Powered by Flask & Owlready2</p>
+            <p style="font-size: 12px; margin-top: 10px;">© 2025 Intelligent Tutoring System</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize the page
+        function init() {
+            loadSummary();
+            populateClassSelect();
+        }
+
+        // Load ontology summary
+        function loadSummary() {
+            fetch('/api/summary')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('stat-classes').textContent = data.data.total_classes;
+                        document.getElementById('stat-individuals').textContent = data.data.total_individuals;
+                        document.getElementById('stat-obj-props').textContent = data.data.total_object_properties;
+                        document.getElementById('stat-data-props').textContent = data.data.total_data_properties;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Populate class select dropdown
+        function populateClassSelect() {
+            fetch('/api/classes')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const select = document.getElementById('classSelect');
+                        data.classes.forEach(cls => {
+                            const option = document.createElement('option');
+                            option.value = cls.name;
+                            option.textContent = cls.name;
+                            select.appendChild(option);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Load all classes
+        function loadClasses() {
+            showLoading('classesResults');
+            fetch('/api/classes')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayClasses(data.classes);
+                    } else {
+                        showError('classesResults', data.error);
+                    }
+                })
+                .catch(error => showError('classesResults', error.message));
+        }
+
+        // Load all individuals
+        function loadIndividuals() {
+            showLoading('classesResults');
+            fetch('/api/individuals')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayIndividuals(data.individuals);
+                    } else {
+                        showError('classesResults', data.error);
+                    }
+                })
+                .catch(error => showError('classesResults', error.message));
+        }
+
+        // Load class hierarchy
+        function loadHierarchy() {
+            showLoading('hierarchyResults');
+            fetch('/api/hierarchy')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayHierarchy(data.hierarchy);
+                    } else {
+                        showError('hierarchyResults', data.error);
+                    }
+                })
+                .catch(error => showError('hierarchyResults', error.message));
+        }
+
+        // Load properties
+        function loadProperties() {
+            showLoading('propertiesResults');
+            fetch('/api/properties')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayProperties(data);
+                    } else {
+                        showError('propertiesResults', data.error);
+                    }
+                })
+                .catch(error => showError('propertiesResults', error.message));
+        }
+
+        // Create individual
+        function createIndividual() {
+            const name = document.getElementById('instanceName').value;
+            const className = document.getElementById('classSelect').value;
+
+            if (!name || !className) {
+                showError('createResults', 'Please fill in all fields');
+                return;
+            }
+
+            fetch('/api/create-individual', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    class: className
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showSuccess('createResults', data.message);
+                        document.getElementById('instanceName').value = '';
+                        loadIndividuals();
+                    } else {
+                        showError('createResults', data.error);
+                    }
+                })
+                .catch(error => showError('createResults', error.message));
+        }
+
+        // Perform search
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (!query) {
+                showError('searchResults', 'Please enter a search term');
+                return;
+            }
+
+            fetch(`/api/search?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displaySearchResults(data.results);
+                    } else {
+                        showError('searchResults', data.error);
+                    }
+                })
+                .catch(error => showError('searchResults', error.message));
+        }
+
+        // Save ontology
+        function saveOntology() {
+            fetch('/api/save')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showSuccess('create', data.message);
+                    } else {
+                        showError('create', data.error);
+                    }
+                })
+                .catch(error => showError('create', error.message));
+        }
+
+        // Display functions
+        function displayClasses(classes) {
+            let html = '<div class="result-section active"><h3>📚 Classes</h3><ul class="item-list">';
+            classes.forEach(cls => {
+                html += `
+                    <li onclick="toggleDetails(this)">
+                        <strong>${cls.name}</strong>
+                        ${cls.comment ? `<p style="font-size: 12px; color: #666; margin-top: 5px;">${cls.comment}</p>` : ''}
+                        <div class="item-details" style="display: none; margin-top: 10px;">
+                            <div class="detail-item">
+                                <span class="detail-label">Parent Classes:</span>
+                                <span class="detail-value">${cls.parent_classes.length > 0 ? cls.parent_classes.join(', ') : 'None'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Instances:</span>
+                                <span class="detail-value">${cls.instances.length > 0 ? cls.instances.join(', ') : 'None'}</span>
+                            </div>
+                        </div>
+                    </li>
+                `;
+            });
+            html += '</ul></div>';
+            document.getElementById('classesResults').innerHTML = html;
+        }
+
+        function displayIndividuals(individuals) {
+            let html = '<div class="result-section active"><h3>👤 Individuals</h3><ul class="item-list">';
+            individuals.forEach(ind => {
+                html += `
+                    <li onclick="toggleDetails(this)">
+                        <strong>${ind.name}</strong>
+                        <div style="margin-top: 5px;">
+                            ${ind.types.map(t => `<span class="badge">${t}</span>`).join('')}
+                        </div>
+                        <div class="item-details" style="display: none; margin-top: 10px;">
+                            <div class="detail-item">
+                                <span class="detail-label">Type(s):</span>
+                                <span class="detail-value">${ind.types.join(', ')}</span>
+                            </div>
+                        </div>
+                    </li>
+                `;
+            });
+            html += '</ul></div>';
+            document.getElementById('classesResults').innerHTML = html;
+        }
+
+        function displayHierarchy(hierarchy) {
+            let html = '<div class="result-section active"><h3>🌳 Class Hierarchy</h3>';
+            for (const [className, info] of Object.entries(hierarchy)) {
+                html += `
+                    <div class="item-details" style="margin-bottom: 15px;">
+                        <strong>${className}</strong>
+                        ${info.comment ? `<p style="font-size: 12px; color: #666; margin-top: 5px;">${info.comment}</p>` : ''}
+                        ${info.superclasses.length > 0 ? `<div style="margin-top: 8px;">Parent: ${info.superclasses.join(', ')}</div>` : ''}
+                        ${info.subclasses.length > 0 ? `<div style="margin-top: 8px;">Subclasses: ${info.subclasses.join(', ')}</div>` : ''}
+                    </div>
+                `;
+            }
+            html += '</div>';
+            document.getElementById('hierarchyResults').innerHTML = html;
+        }
+
+        function displayProperties(data) {
+            let html = '<div class="result-section active">';
+            html += '<h3>⚙️ Object Properties</h3>';
+            data.object_properties.forEach(prop => {
+                html += `
+                    <div class="item-details" style="margin-bottom: 10px;">
+                        <strong>${prop.name}</strong>
+                        <div style="margin-top: 5px; font-size: 12px;">
+                            Domain: ${prop.domain.length > 0 ? prop.domain.join(', ') : 'Any'}
+                            <br>Range: ${prop.range.length > 0 ? prop.range.join(', ') : 'Any'}
+                        </div>
+                    </div>
+                `;
+            });
+            html += '<h3 style="margin-top: 20px;">📋 Data Properties</h3>';
+            data.data_properties.forEach(prop => {
+                html += `
+                    <div class="item-details" style="margin-bottom: 10px;">
+                        <strong>${prop.name}</strong>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            document.getElementById('propertiesResults').innerHTML = html;
+        }
+
+        function displaySearchResults(results) {
+            let html = '<div style="margin-top: 15px;">';
+            if (results.classes.length > 0) {
+                html += '<h4 style="color: #667eea; margin-bottom: 10px;">Classes</h4>';
+                html += '<ul class="item-list">';
+                results.classes.forEach(cls => {
+                    html += `<li>${cls}</li>`;
+                });
+                html += '</ul>';
+            }
+            if (results.individuals.length > 0) {
+                html += '<h4 style="color: #667eea; margin-bottom: 10px; margin-top: 15px;">Individuals</h4>';
+                html += '<ul class="item-list">';
+                results.individuals.forEach(ind => {
+                    html += `<li>${ind}</li>`;
+                });
+                html += '</ul>';
+            }
+            if (results.classes.length === 0 && results.individuals.length === 0) {
+                html += '<p style="color: #666;">No results found</p>';
+            }
+            html += '</div>';
+            document.getElementById('searchResults').innerHTML = html;
+        }
+
+        // Utility functions
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function toggleDetails(element) {
+            const details = element.querySelector('.item-details');
+            if (details) {
+                details.style.display = details.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+
+        function showLoading(elementId) {
+            document.getElementById(elementId).innerHTML = '<div class="loading"><div class="spinner"></div> Loading...</div>';
+        }
+
+        function showSuccess(elementId, message) {
+            document.getElementById(elementId).innerHTML = `<div class="alert alert-success">✓ ${message}</div>`;
+        }
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).innerHTML = `<div class="alert alert-error">✗ Error: ${message}</div>`;
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

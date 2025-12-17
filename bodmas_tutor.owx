@@ -1,0 +1,688 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS">
+    <Prefix name="" IRI="http://www.semanticweb.org/opeyemi/ontologies/2025/11/BODMAS/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#AdditionOperation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Attempt"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BODMASStage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BracketOperation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CompoundExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DivisionOperation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ErrorPattern"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Expression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FeedbackAction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MultiplicationOperation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Operation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OrderOperation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SimpleExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Skill"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Student"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SubtractionOperation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#appliedOperation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#attemptOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDifficultyLevel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasErrorPattern"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOperation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasStage"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSubExpression"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#higherPrecedenceThan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#partOfExpression"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#performedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#practisesSkill"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#producesExpression"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#testsSkill"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#triggersFeedback"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#attemptNumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCorrectAnswer"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDifficultyLevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasMastery"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasText"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hintUsedCount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isCorrectStep"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#precedenceLevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#stageOrder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#symbol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#timeTakenSeconds"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AllLeftToRightNoPrecedence"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ConfirmCorrectStep"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GiveConceptHint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IgnoredBrackets"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OrdersAfterAddSub"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ShowWorkedExample"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyAdditionSubtraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyBracketsFirst"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyDivisionBeforeAdditionSubtraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyDivisionMultiplication"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyMultiplicationBeforeAdditionSubtraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyNestedBrackets"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyOrders"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillApplyPowersAndRoots"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillCheckFinalAnswerReasonableness"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillCheckIntermediateResults"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillCombineLikeTermsInAdditionSubtraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillDetectOwnBODMASError"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillEvaluateExpressionStepByStep"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillExplainBODMASStepInWords"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillHandleBracketsWithNegativeNumbers"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillHandleNegativeNumbersInOperations"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillIdentifyBracketsInExpression"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillIdentifyNextHighestPrecedenceStep"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillLeftToRightWithinSamePrecedence"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SkillRecogniseOrdersSymbols"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StageAddSub"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StageBrackets"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StageDivMul"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StageOrders"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SuggestSimplerProblem"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AdditionOperation"/>
+        <Class IRI="#Operation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BracketOperation"/>
+        <Class IRI="#Operation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CompoundExpression"/>
+        <Class IRI="#Expression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DivisionOperation"/>
+        <Class IRI="#Operation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MultiplicationOperation"/>
+        <Class IRI="#Operation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OrderOperation"/>
+        <Class IRI="#Operation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SimpleExpression"/>
+        <Class IRI="#Expression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SubtractionOperation"/>
+        <Class IRI="#Operation"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#ErrorPattern"/>
+        <NamedIndividual IRI="#AllLeftToRightNoPrecedence"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FeedbackAction"/>
+        <NamedIndividual IRI="#ConfirmCorrectStep"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FeedbackAction"/>
+        <NamedIndividual IRI="#GiveConceptHint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ErrorPattern"/>
+        <NamedIndividual IRI="#IgnoredBrackets"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ErrorPattern"/>
+        <NamedIndividual IRI="#OrdersAfterAddSub"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FeedbackAction"/>
+        <NamedIndividual IRI="#ShowWorkedExample"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyAdditionSubtraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyBracketsFirst"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyDivisionBeforeAdditionSubtraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyDivisionMultiplication"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyMultiplicationBeforeAdditionSubtraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyNestedBrackets"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyOrders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillApplyPowersAndRoots"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillCheckFinalAnswerReasonableness"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillCheckIntermediateResults"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillCombineLikeTermsInAdditionSubtraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillDetectOwnBODMASError"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillEvaluateExpressionStepByStep"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillExplainBODMASStepInWords"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillHandleBracketsWithNegativeNumbers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillHandleNegativeNumbersInOperations"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillIdentifyBracketsInExpression"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillIdentifyNextHighestPrecedenceStep"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillLeftToRightWithinSamePrecedence"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Skill"/>
+        <NamedIndividual IRI="#SkillRecogniseOrdersSymbols"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BODMASStage"/>
+        <NamedIndividual IRI="#StageAddSub"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BODMASStage"/>
+        <NamedIndividual IRI="#StageBrackets"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BODMASStage"/>
+        <NamedIndividual IRI="#StageDivMul"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BODMASStage"/>
+        <NamedIndividual IRI="#StageOrders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FeedbackAction"/>
+        <NamedIndividual IRI="#SuggestSimplerProblem"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#precedenceLevel"/>
+        <NamedIndividual IRI="#StageAddSub"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#precedenceLevel"/>
+        <NamedIndividual IRI="#StageBrackets"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#precedenceLevel"/>
+        <NamedIndividual IRI="#StageDivMul"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#precedenceLevel"/>
+        <NamedIndividual IRI="#StageOrders"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#appliedOperation"/>
+        <Class IRI="#Attempt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#attemptOf"/>
+        <Class IRI="#Attempt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasErrorPattern"/>
+        <Class IRI="#Attempt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOperation"/>
+        <Class IRI="#BODMASStage"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOperation"/>
+        <Class IRI="#Expression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasStage"/>
+        <Class IRI="#Operation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSubExpression"/>
+        <Class IRI="#Expression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#higherPrecedenceThan"/>
+        <Class IRI="#BODMASStage"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#partOfExpression"/>
+        <Class IRI="#Operation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#performedBy"/>
+        <Class IRI="#Attempt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#performedBy"/>
+        <Class IRI="#Student"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#practisesSkill"/>
+        <Class IRI="#Student"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#producesExpression"/>
+        <Class IRI="#Attempt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#testsSkill"/>
+        <Class IRI="#Expression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#triggersFeedback"/>
+        <Class IRI="#Attempt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#appliedOperation"/>
+        <Class IRI="#Operation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#attemptOf"/>
+        <Class IRI="#Expression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasErrorPattern"/>
+        <Class IRI="#ErrorPattern"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOperation"/>
+        <Class IRI="#Operation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasStage"/>
+        <Class IRI="#BODMASStage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSubExpression"/>
+        <Class IRI="#Expression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#higherPrecedenceThan"/>
+        <Class IRI="#BODMASStage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#partOfExpression"/>
+        <Class IRI="#Expression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#practisesSkill"/>
+        <Class IRI="#Skill"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#producesExpression"/>
+        <Class IRI="#Expression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#testsSkill"/>
+        <Class IRI="#Skill"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#triggersFeedback"/>
+        <Class IRI="#FeedbackAction"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#attemptNumber"/>
+        <Class IRI="#Attempt"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasCorrectAnswer"/>
+        <Class IRI="#Expression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDifficultyLevel"/>
+        <Class IRI="#Expression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasMastery"/>
+        <Class IRI="#Student"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasText"/>
+        <Class IRI="#Expression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hintUsedCount"/>
+        <Class IRI="#Attempt"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isCorrectStep"/>
+        <Class IRI="#Attempt"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#precedenceLevel"/>
+        <Class IRI="#BODMASStage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#stageOrder"/>
+        <Class IRI="#BODMASStage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#symbol"/>
+        <Class IRI="#Operation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#timeTakenSeconds"/>
+        <Class IRI="#Attempt"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#attemptNumber"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCorrectAnswer"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDifficultyLevel"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasMastery"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasText"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hintUsedCount"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isCorrectStep"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#precedenceLevel"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#stageOrder"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#symbol"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#timeTakenSeconds"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Attempt</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S1</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Attempt"/>
+                <Variable IRI="/a"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#attemptOf"/>
+                <Variable IRI="/a"/>
+                <Variable IRI="/expr"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#appliedOperation"/>
+                <Variable IRI="/a"/>
+                <Variable IRI="/opChosen"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasStage"/>
+                <Variable IRI="/opChosen"/>
+                <Variable IRI="/stageChosen"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#precedenceLevel"/>
+                <Variable IRI="/stageChosen"/>
+                <Variable IRI="/pChosen"/>
+            </DataPropertyAtom>
+        </Body>
+        <Head/>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Expression</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S2</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Expression"/>
+                <Variable IRI="/expr"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasOperation"/>
+                <Variable IRI="/expr"/>
+                <Variable IRI="/opOther"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasStage"/>
+                <Variable IRI="/opOther"/>
+                <Variable IRI="/stageOther"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#precedenceLevel"/>
+                <Variable IRI="/stageOther"/>
+                <Variable IRI="/pOther"/>
+            </DataPropertyAtom>
+        </Body>
+        <Head/>
+    </DLSafeRule>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
